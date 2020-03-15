@@ -42,12 +42,12 @@ public class Comment extends AuditModel {
     private Long id;
 
     @NotNull
-    @Size(max=250)
+    @Size(max = 250)
     private String text;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "post_id", nullable = false)
-  //  @OnDelete(action = OnDeleteAction.CASCADE)
+    //  @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Post post;
 }

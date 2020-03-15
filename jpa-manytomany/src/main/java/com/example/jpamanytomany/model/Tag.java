@@ -57,7 +57,7 @@ public class Tag implements Serializable {
 
     private String description;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "tags")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "tags")
 
     private Set<Post> posts = new HashSet<>();
 }

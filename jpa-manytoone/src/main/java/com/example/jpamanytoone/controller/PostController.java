@@ -19,25 +19,25 @@ public class PostController {
     private PostRepository postRepository;
 
     @PostMapping("/posts")
-    public Post createPost(@Valid @RequestBody Post post){
+    public Post createPost(@Valid @RequestBody Post post) {
 
         return postRepository.save(post);
     }
 
     @GetMapping("/posts")
-    public Page<Post> getAllPosts(Pageable pageable){
+    public Page<Post> getAllPosts(Pageable pageable) {
         return postRepository.findAll(pageable);
     }
 
     @GetMapping("/posts/{id}")
-    public Post getPost(@PathVariable Long id){
+    public Post getPost(@PathVariable Long id) {
         return postRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
 
     }
 
     @PutMapping("/posts/{id}")
-    public Post updatePost(@PathVariable Long id, @RequestBody Post postDetails){
+    public Post updatePost(@PathVariable Long id, @RequestBody Post postDetails) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
         post.setContent(postDetails.getContent());
@@ -47,7 +47,7 @@ public class PostController {
     }
 
     @DeleteMapping("/posts/{id}")
-    public ResponseEntity<?> deletePost(@PathVariable Long id){
+    public ResponseEntity<?> deletePost(@PathVariable Long id) {
 
         return postRepository.findById(id).map(post -> {
             postRepository.delete(post);
